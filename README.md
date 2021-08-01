@@ -6,15 +6,11 @@
 - Um exemplo de como testar o código locamente
 
 ```elixir
-Compiling 1 file (.ex)
-Interactive Elixir (1.11.4) - press Ctrl+C to exit (type h() ENTER for help)
-iex(1)> alias FlightBooking.
-Bookings                      MixProject                    
-Users                         create_or_update_booking/1    
-create_or_update_user/1       start_agents/0                
+Erlang/OTP 23 [erts-11.1.8] [source] [64-bit] [smp:8:8] [ds:8:8:10] [async-threads:1] [hipe]
 
-iex(1)> alias FlightBooking.Users.
-Agent             CreateOrUpdate    User              
+Compiling 7 files (.ex)
+Generated flight_booking app
+Interactive Elixir (1.11.4) - press Ctrl+C to exit (type h() ENTER for help)
 iex(1)> alias FlightBooking.Users.User
 FlightBooking.Users.User
 iex(2)> alias FlightBooking.Bookings.Booking
@@ -24,77 +20,44 @@ iex(3)> {:ok, user} = User.build(UUID.uuid4, "vinicius", "vinicius@email", "1234
  %FlightBooking.Users.User{
    cpf: "1234423232",
    email: "vinicius@email",
-   id: "348d93b5-5473-4f33-ab7a-fb27c3916c62",
+   id: "2aadf6d6-a857-4072-82b4-a984843000f8",
    name: "vinicius"
  }}
-iex(4)> user
-%FlightBooking.Users.User{
-  cpf: "1234423232",
-  email: "vinicius@email",
-  id: "348d93b5-5473-4f33-ab7a-fb27c3916c62",
-  name: "vinicius"
-}
-iex(5)> alias FlightBooking.Users. 
-Agent             CreateOrUpdate    User              
-iex(5)> alias FlightBooking.Users.Agent, as: UserAgent
+iex(4)> alias FlightBooking.Users.Agent, as: UserAgent
 FlightBooking.Users.Agent
-iex(6)> alias FlightBooking.Bookings., as: BookingAgent     
-Agent             Booking           CreateOrUpdate    
-iex(6)> alias FlightBooking.Bookings.Booking, as: BookingAgent
-FlightBooking.Bookings.Booking
-iex(7)> User
-User         UserAgent    
-iex(7)> UserAgent.
-child_spec/1    get/1           get_all/0       save/1          
-start_link/1    
-iex(7)> UserAgent.start_link %{}
-{:ok, #PID<0.222.0>}
-iex(8)> UserAgent.save user
+iex(5)> alias FlightBooking.Bookings.Agent, as: BookingAgent  
+FlightBooking.Bookings.Agent
+iex(6)> UserAgent.start_link %{}
+{:ok, #PID<0.270.0>}
+iex(7)> UserAgent.save user
 :ok
-iex(9)> UserAgent.
-child_spec/1    get/1           get_all/0       save/1          
-start_link/1    
-iex(9)> UserAgent.get "348d93b5-5473-4f33-ab7a-fb27c3916c62"
+iex(8)> UserAgent.get "2aadf6d6-a857-4072-82b4-a984843000f8"
 {:ok,
  %FlightBooking.Users.User{
    cpf: "1234423232",
    email: "vinicius@email",
-   id: "348d93b5-5473-4f33-ab7a-fb27c3916c62",
+   id: "2aadf6d6-a857-4072-82b4-a984843000f8",
    name: "vinicius"
  }}
-iex(10)> {:ok, booking} = Booking.build("348d93b5-5473-4f33-ab7a-fb27c3916c62", NaiveDateTime.utc_now, "aracaju", "sao paulo")
-** (MatchError) no match of right hand side value: {:error, "Invalid params"}
-
-iex(10)> {:ok, booking} = Booking.build(user, NaiveDateTime.utc_now, "aracaju", "sao paulo")                                  
+iex(9)> {:ok, booking} = Booking.build(user, NaiveDateTime.utc_now, "aracaju", "sao paulo")
 {:ok,
  %FlightBooking.Bookings.Booking{
-   date: ~N[2021-08-01 22:07:57.923932],
+   date: ~N[2021-08-01 22:36:25.348881],
    destination: "sao paulo",
    origin: "aracaju",
-   user_id: "348d93b5-5473-4f33-ab7a-fb27c3916c62"
+   user_id: "2aadf6d6-a857-4072-82b4-a984843000f8"
  }}
-iex(11)> alias FlightBooking.Bookings.Agent, as: BookingAgent                                                                 
-FlightBooking.Bookings.Agent
-iex(12)> A
-Access             Agent              Application        ArgumentError      
-ArithmeticError    Atom               
-iex(12)> BookingAgent.
-child_spec/1    get/1           get_all/0       save/1          
-start_link/1    
-iex(12)> BookingAgent.start_link %{}
-{:ok, #PID<0.231.0>}
-iex(13)> BookingAgent.save(booking) 
-{:ok, "e1c06db3-b6a6-43b8-bc02-901bf240ad54"}
-iex(14)> BookingAgent.
-child_spec/1    get/1           get_all/0       save/1          
-start_link/1    
-iex(14)> BookingAgent.get_all
+iex(10)> BookingAgent.start_link %{}
+{:ok, #PID<0.276.0>}
+iex(11)>  BookingAgent.save(booking)
+{:ok, "9718fdc2-cd8b-4e71-9e68-dc669e9d68b6"}
+iex(12)> BookingAgent.get_all
 %{
-  "e1c06db3-b6a6-43b8-bc02-901bf240ad54" => %FlightBooking.Bookings.Booking{
-    date: ~N[2021-08-01 22:07:57.923932],
+  "9718fdc2-cd8b-4e71-9e68-dc669e9d68b6" => %FlightBooking.Bookings.Booking{
+    date: ~N[2021-08-01 22:36:25.348881],
     destination: "sao paulo",
     origin: "aracaju",
-    user_id: "348d93b5-5473-4f33-ab7a-fb27c3916c62"
+    user_id: "2aadf6d6-a857-4072-82b4-a984843000f8"
   }
-} 
+}
 ```
