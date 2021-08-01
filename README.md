@@ -98,9 +98,3 @@ iex(14)> BookingAgent.get_all
   }
 } 
 ```
-
-
-# flinght_booking
-# flinght_booking
-# flinght_booking
-# flight_booking
