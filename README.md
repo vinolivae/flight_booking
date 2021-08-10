@@ -7,7 +7,7 @@
 - [x] Criação de usuário.
 - [x] Criação de reserva.
 - [x] Persistência local utilizando Agents.
-- [] Geração de .csv para guardar todas as reservas.
+- [ ]  Geração de .csv para guardar todas as reservas.
 
 Utilize os arquivos nomeados como "manage" para obter formas de testar utilizando o IEX.
 
