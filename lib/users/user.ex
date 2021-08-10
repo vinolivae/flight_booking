@@ -1,5 +1,5 @@
 defmodule FlightBooking.Users.User do
-  @keys [:id, :name, :email, :cpf]
+  @keys [:name, :email, :cpf]
   @enforce_keys @keys
   defstruct @keys
 
@@ -7,11 +7,9 @@ defmodule FlightBooking.Users.User do
           name :: String.t(),
           email :: String.t(),
           cpf :: String.t()
-        ) ::
-          {:error, String.t()}
-          | {:ok, User.t()}
-  def build(id, name, email, cpf) when is_bitstring(cpf) do
-    {:ok, %__MODULE__{id: id, name: name, email: email, cpf: cpf}}
+        ) :: {:ok, User.t()} | {:error, String.t()}
+  def build(name, email, cpf) when is_bitstring(cpf) do
+    {:ok, %__MODULE__{name: name, email: email, cpf: cpf}}
   end
 
   def build(_name, _email, _cpf), do: {:error, "Invalid parameters"}
