@@ -4,6 +4,7 @@ defmodule FlightBooking.MixProject do
   def project do
     [
       app: :flight_booking,
+      elixirc_paths: elixirc_paths(Mix.env()),
       version: "0.1.0",
       elixir: "~> 1.11",
       start_permanent: Mix.env() == :prod,
@@ -26,4 +27,7 @@ defmodule FlightBooking.MixProject do
       {:elixir_uuid, "~> 1.2"}
     ]
   end
+
+  defp elixirc_paths(:test), do: ["lib", "test/support"]
+  defp elixirc_paths(_), do: ["lib"]
 end
