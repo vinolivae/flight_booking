@@ -67,5 +67,5 @@ defmodule FlightBooking.Bookings.ManageAgent do
     user_name: "any"
   }}
   """
-  def get_all(), do: BookingAgent.get_all()
+  def get_all, do: BookingAgent.get_all()
 end

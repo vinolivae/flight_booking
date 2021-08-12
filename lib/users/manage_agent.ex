@@ -6,19 +6,19 @@ defmodule FlightBooking.Users.ManageAgent do
   Build or update a user.
 
   testing on iex:
-  iex> user_params = %{name: "any", email: "any@email.com", cpf: "12345678910"}
+  iex> user_params = %{id: UUID.uuid4(), name: "any", email: "any@email.com", cpf: "12345678910"}
   %{
     cpf: "12345678910",
     email: "any@email.com",
-    id: "df5fb348-8e79-4ee0-90db-52a6968c6f1d",
+    id: "id",
     name: "any"
   }
   iex> FlightBooking.create_or_update_user(user_params)
     {:ok, uuid}
   """
-  def call(%{name: name, email: email, cpf: cpf}) do
-    name
-    |> User.build(email, cpf)
+  def call(%{id: id, name: name, email: email, cpf: cpf}) do
+    id
+    |> User.build(name, email, cpf)
     |> save_user()
   end
 
@@ -53,7 +53,7 @@ defmodule FlightBooking.Users.ManageAgent do
   }
   }
   """
-  def get_all(), do: UserAgent.get_all()
+  def get_all, do: UserAgent.get_all()
 
   defp save_user({:ok, %User{} = user}) do
     UserAgent.save(user)

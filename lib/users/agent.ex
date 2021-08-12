@@ -8,9 +8,8 @@ defmodule FlightBooking.Users.Agent do
   end
 
   def save(%User{} = user) do
-    uuid = UUID.uuid4()
-    Agent.update(__MODULE__, &update_state(&1, user, uuid))
-    {:ok, uuid}
+    Agent.update(__MODULE__, &update_state(&1, user, user.id))
+    {:ok, user.id}
   end
 
   defp update_state(state, %User{} = user, uuid), do: Map.put(state, uuid, user)
