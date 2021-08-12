@@ -23,5 +23,5 @@ defmodule FlightBooking.Bookings.Booking do
      }}
   end
 
-  def build(_user, _user_id, _date, _origin, _destination), do: {:error, "Invalid params"}
+  def build(_user, _user_id, _date, _origin, _destination), do: {:error, "Invalid Booking params"}
 end

@@ -13,5 +13,5 @@ defmodule FlightBooking.Users.User do
     {:ok, %__MODULE__{id: id, name: name, email: email, cpf: cpf}}
   end
 
-  def build(_id, _name, _email, _cpf), do: {:error, "Invalid parameters"}
+  def build(_id, _name, _email, _cpf), do: {:error, "Invalid User params"}
 end
