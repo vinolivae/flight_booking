@@ -15,8 +15,8 @@ defmodule FlightBooking.Factory do
 
   def booking_factory do
     %Booking{
-      user_id: UUID.uuid4(),
       user_name: "John Doe",
+      user_id: UUID.uuid4(),
       date: NaiveDateTime.utc_now(),
       origin: "Aracaju",
       destination: "Recife"
