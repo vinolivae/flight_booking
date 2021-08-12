@@ -20,6 +20,6 @@ defmodule FlightBooking.Bookings.GenReport do
          origin: origin,
          destination: destination
        }) do
-    "#{user_id}, #{name}, #{date}, #{origin}, #{destination}"
+    "#{user_id}, #{name}, #{date}, #{origin}, #{destination}\n"
   end
 end

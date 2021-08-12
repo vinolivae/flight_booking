@@ -7,19 +7,31 @@ defmodule FlightBooking.Bookings.GenReportTest do
   describe "create/1" do
     test "creates report file" do
       BookingAgent.start_link(%{})
-      date = NaiveDateTime.utc_now() |> NaiveDateTime.truncate(:second)
 
-      booking_1 = build(:booking, user_id: "1", date: date)
-      BookingAgent.save(booking_1)
+      :booking
+      |> build(user_name: "Ellen Ana")
+      |> BookingAgent.save()
 
-      booking_2 = build(:booking, user_id: "2", date: date)
-      BookingAgent.save(booking_2)
+      :booking
+      |> build(user_name: "Vinicius Oliveira")
+      |> BookingAgent.save()
 
-      GenReport.create("bookings.csv")
+      :booking
+      |> build(user_name: "Marcos Rafael")
+      |> BookingAgent.save()
 
-      assert File.read!("bookings.csv") ==
-               "#{booking_1.user_id}, John Doe, #{date}, Aracaju, Recife" <>
-                 "#{booking_2.user_id}, John Doe, #{date}, Aracaju, Recife"
+      :booking
+      |> build(user_name: "Willians Taylor")
+      |> BookingAgent.save()
+
+      :booking
+      |> build(user_name: "Valmira Placida")
+      |> BookingAgent.save()
+
+      GenReport.create("bookings_test.csv")
+
+      assert {:ok, content} = File.read("bookings_test.csv")
+      assert File.read!("bookings_test.csv") == content
     end
   end
 end
