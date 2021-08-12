@@ -1,13 +1,7 @@
 defmodule FlightBooking.Users.AgentTest do
   use ExUnit.Case, async: true
   import FlightBooking.Factory
-  alias FlightBooking.Users.Agent
-
-  describe "start_link/1" do
-    test "succeeds if agent is linked successfully" do
-      assert {:ok, _pid} = Agent.start_link(%{})
-    end
-  end
+  alias FlightBooking.Users.{Agent, User}
 
   describe "save/1" do
     setup do
@@ -35,6 +29,15 @@ defmodule FlightBooking.Users.AgentTest do
 
     test "fails if user is is invalid" do
       assert {:error, :user_not_found} = Agent.get(157)
+    end
+  end
+
+  describe "get_all/0" do
+    test "succeeds if get all users" do
+      Agent.start_link(%{})
+      user = build(:user)
+      assert {:ok, uuid} = Agent.save(user)
+      assert %{^uuid => %User{}} = Agent.get_all()
     end
   end
 end

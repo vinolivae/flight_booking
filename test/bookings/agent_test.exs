@@ -3,12 +3,6 @@ defmodule FlightBooking.Bookings.AgentTest do
   import FlightBooking.Factory
   alias FlightBooking.Bookings.{Agent, Booking}
 
-  describe "start_link/1" do
-    test "succeeds if agent is linked successfully" do
-      assert {:ok, _pid} = Agent.start_link(%{})
-    end
-  end
-
   describe "save/1" do
     setup do
       user = build(:user)
