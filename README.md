@@ -7,7 +7,24 @@
 - [x] Criação de usuário.
 - [x] Criação de reserva.
 - [x] Persistência local utilizando Agents.
-- [ ]  Geração de .csv para guardar todas as reservas.
+- [x]  Geração de .csv para guardar todas as reservas.
+
+## Coveralls result:
+
+COV    |  FILE                          |            LINES |RELEVANT  | MISSED
+-------|--------------------------------|------------------|----------|-------
+100.0% | lib/bookings/agent.ex          |               28 |       7  |     0
+  0.0% |lib/bookings/booking.ex         |               27 |       0  |     0
+100.0% |lib/bookings/gen_report.ex      |               25 |       4  |     0
+100.0% |lib/bookings/manage_agent.ex    |               71 |       6  |     0
+100.0% |lib/flight_booking.ex           |               20 |       8  |     0
+100.0% |lib/users/agent.ex              |               27 |       7  |     0
+100.0% |lib/users/manage_agent.ex       |               63 |       5  |     0
+  0.0% |lib/users/user.ex               |               17 |       0  |     0
+100.0% |test/support/factory.ex         |               25 |       2  |     0
+[TOTAL]|100.0%                          |                  |          |  
+
+
 
 Utilize os arquivos nomeados como "manage" para obter formas de testar utilizando o IEX.
 
